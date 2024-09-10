@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block title %}
+    <h1 class="h1">{{num.count}}+ Jobs Available</h1>
+{% endblock title %}
+{% block Content %}
+    <div class="content">
+        <div class="filter">
+
+                <form method="get">
+                    <h3>Filter</h3>
+                    <div class="search">
+                        <input type="search" placeholder="Search keyword" name="search">
+                    </div>
+            
+                    <div class="single_field">
+                        <div class="options">
+                            <select id="location" name="location" class="option">
+                                <option value="">Location</option>
+                                {% for location in locations %}
+                                    <option value="{{ location }}">{{ location }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="single_field">
+                        <div class="options">
+                            <select id="category" name="category" class="option">
+                                <option value="">Category</option>
+                                {% for category in categories %}
+                                    <option value="{{ category.id }}">{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+            
+                    <div class="single_field">
+                        <div class="options">
+                            <select id="experience" name="experience" class="option">
+                                <option value="">Experience</option>
+                                {% for exp in experiences %}
+                                    <option value="{{ exp }}">{{ exp }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+            
+                    <div class="single_field">
+                        <div class="options">
+                            <select id="job_type" name="job_type" class="option">
+                                <option value="">Job type</option>
+                                {% for job_type in job_types %}
+                                    <option value="{{ job_type }}">{{ job_type }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+            
+                    <button class="button" type="submit">Submit</button>
+                </form>
+
+            
+            <!-- <div class="range">
+                <div class="slider">
+                    <label for="amount">Price range:</label>
+                    <input type="range" id="amount" name="vol" min="0" max="30000" style="accent-color: #00D363">
+                </div>
+                </div> -->
+        </div>
+
+
+        <div class="job_list">
+            <div class="title"><h3>Job Listing</h3></div>
+            {% for job in jobs %}
+            <div class="job">
+                <div class="img-name">
+                    <div class="img">
+                        <img src="{{job.image.url}}" alt="Job image" class="image">
+                    </div>
+                    <div class="name" style="cursor: pointer;">
+                        <a href="{% url 'jobs:job_detail' job.slug %}" class="go">
+                            <h4>{{job}}</h4>
+                        </a>
+                        <div class="main">
+                            <div id="p1"><p> <i class="fa-solid fa-location-dot"></i> {{job.location}}</p></div>
+                            <div id="p2"><p> <i class="fa-regular fa-clock"></i> {{job.job_type}}</p></div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="app-date">
+                    <a href="{% url 'jobs:job_detail' job.slug %}"><button class="btn">Apply Now</button></a>
+                    
+                    <p class="date"> <i>Date line: {{job.published_at|date:'d M o'}}</i> </p>
+                </div>
+            </div>
+            {% endfor %}
+            {% if jobs.has_other_pages  %}
+                <div class="pagination">
+                    {% if jobs.has_previous %}
+                        <a href="?page={{jobs.previous_page_number}}" id="a1"><i class="fa-solid fa-angle-left"></i></a>
+                    {% endif %}
+                    {% for i in jobs.paginator.page_range %}
+                    <a href="?page={{i}}" id="a2">{{i}}</a>
+                    {% endfor %}
+                    {% if  jobs.has_next %}
+                        <a href="?page={{jobs.next_page_number}}" id="a4"><i class="fa-solid fa-angle-right"></i></a>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div></div>
+            {% endif %}
+        </div>
+
+    </div>
+{% endblock Content %}

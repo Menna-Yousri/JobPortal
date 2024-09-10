@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <h1 class="h1">Post A Job</h1>
+{% endblock title %}
+
+{% block Content %}
+<div class="dcontent Pcontent">
+    <div class="job-form">
+        <h4>Post a New Job</h4>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Job Title -->
+            <div class="input_field">
+                <input type="text" placeholder="Job Title" name="title" required>
+            </div>
+
+            <!-- Job Type -->
+            <div class="single_field options">
+                <select name="job_type" class="option" required>
+                    <option value="">Select Job Type</option>
+                    {% for type in JOB_TYPE %}
+                        <option value="{{ type.0 }}">{{ type.1 }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Location -->
+            <div class="input_field">
+                <input type="text" placeholder="Location" name="location" required>
+            </div>
+
+            <!-- Salary -->
+            <div class="input_field">
+                <input type="number" placeholder="Salary (in k)" name="salary" required>
+            </div>
+
+            <!-- Experience -->
+            <div class="input_field">
+                <input type="number" placeholder="Required Experience (in years)" name="experience" required>
+            </div>
+
+            <!-- Vacancy -->
+            <div class="input_field">
+                <input type="number" placeholder="Number of Vacancies" name="vacancy" required>
+            </div>
+
+            <!-- Category -->
+            <div class="single_field options">
+                <select id="category-select" name="category" class="option" required>
+                    <option value="">Select Category</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                    <option value="new">Add New Category</option>
+                </select>
+                <div id="new-category-container" style="display: none;" class="input_field">
+                    <input type="text" id="new-category" name="new_category" placeholder="Enter new category name">
+                </div>
+            </div>
+
+            <!-- Job Description -->
+            <div class="input_field">
+                <textarea name="description" cols="30" rows="5" placeholder="Job Description" style="min-height: 100px;" required></textarea>
+            </div>
+
+            <!-- Upload Image -->
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <button type="button" id="inputGroupFileAddon03" onclick="document.getElementById('inputGroupFile03').click();" style="cursor: pointer;">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" name="image" required onchange="updateFileName()">
+                    <label class="custom-file-label" for="inputGroupFile03">Upload Job Image</label>
+                </div>
+            </div>
+
+            <button class="post-btn" type="submit">Post</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function updateFileName() {
+        var input = document.getElementById('inputGroupFile03');
+        var label = document.querySelector('label[for="inputGroupFile03"]');
+
+        // Check if a file is selected
+        if (input.files.length > 0) {
+            var fileName = input.files[0].name;
+            label.textContent = fileName;
+        } else {
+            label.textContent = 'Upload Job Image';
+        }
+    }
+
+    document.getElementById('category-select').addEventListener('change', function() {
+        var selectedValue = this.value;
+        var newCategoryContainer = document.getElementById('new-category-container');
+        if (selectedValue === 'new') {
+            newCategoryContainer.style.display = 'block';
+        } else {
+            newCategoryContainer.style.display = 'none';
+        }
+    });
+</script>
+{% endblock Content %}

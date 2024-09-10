@@ -1,0 +1,1231 @@
+/* Start Variables */
+:root {
+  --main-color: #00D363;
+  --secondary-color: #0A8CFF;
+  --section-padding: 100px;
+  --section-background: #F5F7FA;
+  --main-duration: 0.5s;
+}
+/* End Variables */
+
+/* Start Global Rules */
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header .links {
+  display: block;
+  position: relative;
+}
+.header .links .icon {
+  width: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+.header .links ul::before {
+  content: "";
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent white transparent;
+  position: absolute;
+  right: 5px;
+  top: -20px;
+}
+.header .links:hover .icon span:nth-child(2) {
+  width: 100%;
+}
+.header .links .icon span {
+  background-color: white;
+  margin-bottom: 5px;
+  height: 3px;
+  width: 100%;
+  display: block;
+}
+
+.header .links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  position: absolute;
+  right: 0;
+  min-width: 200px;
+  top: calc(100% + 15px);
+  display: none;
+  z-index: 1;
+}
+
+.header .links:hover ul {
+  display: block;
+}
+
+.header .links ul li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #333;
+  transition: var(--main-duration);
+}
+.header .links .icon span:first-child {
+  width: 100%;
+}
+.header .links .icon span:nth-child(2) {
+  width: 60%;
+  transition: var(--main-duration);
+}
+.header .links .icon span:last-child {
+  width: 100%;
+}
+
+.header .links ul li a:hover {
+  padding-left: 25px;
+}
+
+.header .links ul li:not(:last-child) a {
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.header {
+  background-image: url(../images/banner.png);
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header .container .illustration{
+  display: none;
+}
+
+.header .container h1{
+  color: white;
+  font-size: 20px;
+  margin-left: 38%;
+}
+.header .logo img {
+  max-width: 80%;
+  height: auto;
+}
+
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+  .footer {
+    padding: 20px 0;  /* Reduce padding */
+  }
+  .footer .container .up {
+    padding: 50px 0;  /* Adjust padding for mobile */
+  }
+}
+
+
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+  .header .links {
+    display: none;
+  }
+  .header .container .illustration{
+    display: block;
+    height: 400px;
+  }
+  
+  .header .container h1{
+    font-size: 50px;
+    margin-left: 230px;
+    color: white;
+  }
+  .header {
+    background-image: url(../images/banner.png);
+    height: 505px;
+    display: flex;
+    flex-direction: column;
+  }
+  .header .logo img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+
+/* End Global Rules */
+
+/* Hide .nav and .log-post for screens smaller than 992px */
+@media (max-width: 991px) {
+  .header .nav {
+    display: none !important;
+  }
+
+  .header .log-post {
+    display: none !important;
+  }
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  padding: 15px 15px;
+}
+
+
+.header .nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header .nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.header .nav ul li {
+  display: inline-block;
+}
+
+.header .nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 15px 20px;
+}
+
+.header .nav ul li a:hover {
+  color: var(--main-color);
+}
+
+.header .log-post {
+  display: flex;
+  align-items: center;
+}
+
+.header .log-post span {
+  margin-right: 30px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.header button {
+  background-color: var(--main-color);
+  color: #fff;
+  display: inline-block;
+  padding: 13px 29px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  height: 50px;
+}
+
+.header button:hover {
+  background-color: transparent;
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+}
+
+@media (min-width: 992px) {
+  .header .container {
+    width: 95%;
+  }
+}
+
+@media (min-width: 1662px) {
+  .header .container {
+    width: 80%;
+  }
+}
+
+.header .container .illustration{
+  height: 400px;
+}
+
+
+
+.footer {
+  background-color: #001D38;
+  display: flex;
+  flex-direction: column; 
+  flex-basis: auto; 
+}
+
+
+
+.footer .container {
+  margin: auto;
+  width: 80%;
+}
+
+.footer h3 {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.footer p{
+  color: #AAB1B7;
+  font-size: 14px;
+}
+
+.footer .container .up {
+  padding: 100px 0px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.footer .container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer .container ul li{
+  height: 40px;
+}
+
+.footer .container ul li a {
+  text-decoration: none;
+  color: #AAB1B7;
+  font-size: 14px;
+}
+
+.footer .container .socail_links ul{
+  width: 100%;
+  display: flex;
+}
+
+.footer .container .socail_links ul li{
+  display: inline-block;
+}
+
+.footer .container .socail_links ul li a{
+  font-size: 15px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 7px;
+  line-height: 40px !important;
+  background: transparent;
+  transition: 0.3s;
+  border: 1px solid #334A60;
+  opacity: 0.3;
+}
+.footer .container .socail_links ul li a:hover{
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+  color: white;
+  opacity: 1;
+}
+
+.footer .container .one{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.footer .four {
+  position: relative;
+}
+
+.footer .four .newsletter_form input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  padding-left: 20px;
+  font-size: 15px;
+  border: none;
+  border: 1px solid #334A60;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+
+.footer .four .newsletter_form button {
+  position: absolute;
+  top: 84px;
+  right: 0;
+  height: 40px;
+  border: none;
+  font-size: 14px;
+  color: white;
+  background: var(--main-color);
+  padding: 0 22px;
+  cursor: pointer;
+  border-radius: 5px;
+  right: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footer .four .newsletter_form input::placeholder {
+  color: #AAB1B7;
+}
+
+body{
+  color: #F5F7FA;
+}
+
+.content .filter{
+  height: auto;
+  background-color: white;
+  display: grid;
+  grid-auto-rows: auto;
+}
+
+.content .filter h3{
+  font-size: 20px;
+  margin: 20px 0;
+  color: #001D38;
+  font-weight: 400;
+}
+
+.content .filter .search input {
+  height: 60px;
+  border: 1px solid #E8E8E8;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 15px;
+}
+
+.content .filter .single_field .option{
+  height: 60px;
+  line-height: 60px;
+  color: #7A838B;
+  font-size: 16px;
+  margin-bottom: 15px;
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+  border-radius: 5px;
+  border: solid 1px #e8e8e8;
+}
+
+.content button {
+  height: 50px;
+  width: 210px;
+  border: none;
+  font-size: 16px;
+  color: white;
+  background: var(--main-color);
+  padding: 0 22px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 600;
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.content button:hover {
+  color: #00D363 !important;
+  border: 1px solid #00D363;
+  background: transparent;
+}
+
+.content .range label {
+  margin-top: 4px;
+  color: #001D38;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.content .range input {
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 30px;
+}
+
+
+.content .job_list .job .img-name .img {
+  height: 80px;
+  width: 80px;
+  background-color: var(--section-background);
+  display: inline-block;
+}
+
+.content .job_list {
+  padding: 0 15px;
+}
+
+.content .filter {
+  padding: 0 15px;
+}
+
+.content .job_list h3 {
+  font-size: 20px;
+  padding: 0 20px;
+  color: #001D38;
+  font-weight: 400;
+}
+
+.content .job_list > div:not(:first-child) {
+  padding: 30px;
+}
+
+
+
+/* Smaller screens (less than 1260px) */
+@media (max-width: 1070px) and (min-width: 300px) {
+    /* Set grid areas for filter and job_list */
+  .job .img-name {
+    grid-area: img-name; /* Filter will be in the first column */
+  }
+
+  .job .app-date {
+    grid-area: app-date; /* Job list will be in the second column */
+  }
+
+  .job {
+    grid-template-columns: 1fr; /* Single-column layout */
+    grid-template-areas: 
+      "img-name" 
+      "app-date"; /* Stack filter and job_list in one column */
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .job .img-name h4 {
+    font-size: 18px !important;
+  }
+  .job p {
+    font-size: 12px;
+  }
+
+  .app-date .btn {
+    font-size: 12px;
+    color: white;
+    background: var(--main-color);
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 500;
+    width: 90px !important;
+    height: 35px !important;
+    padding: 0;
+  }
+
+  .app-date .date {
+    font-size: 12px !important;
+  }
+}
+
+
+/* Smaller screens (less than 1260px) */
+@media (max-width: 1025px) and (min-width: 200px) {
+  .content{
+    width: 90%;
+    margin-left: 2% !important;
+    margin-right: 2% !important;
+  }
+  /* Set grid areas for filter and job_list */
+.job .img-name .main #p1 {
+  grid-area: p1; /* Filter will be in the first column */
+  margin-bottom: 2px;
+}
+
+.job .img-name .main #p2 {
+  grid-area: p2; /* Job list will be in the second column */
+}
+
+.job .img-name .main {
+  display: grid;
+  grid-template-columns: 1fr; /* Single-column layout */
+  grid-template-areas: 
+    "p1" 
+    "p2"; /* Stack filter and job_list in one column */
+  margin-left: 5%;
+  margin-right: 5%;
+  align-content: space-between;
+}
+}
+
+/* Default (for screens below 1070px, such as mobile or tablet) */
+.content .job_list .job {
+  width: 100%;
+  display: block; /* Fallback for smaller screens, no grid layout */
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+/* Media query for screens above 1070px */
+@media (min-width: 1070px) {
+  .content .job_list .job {
+    display: grid;
+    grid-template-columns: 60% 30%; /* Apply the two-column grid layout */
+    justify-content: space-between;
+  }
+
+  .content .job_list .img-name .name .main {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    margin: 0;
+  }
+}
+
+
+.content .job_list .img-name {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: center;
+}
+
+.content .job_list .img-name .image {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.content .job_list .img-name .img {
+  position: relative;
+  margin-right: 25px;
+  background-color: #F5F7FA;
+}
+
+.content .job_list .img-name .name h4 {
+  margin: 0 0 20px;
+  color: #191D34;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.content .job_list .img-name .name p {
+  margin: 0;
+}
+
+
+
+.app-date {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-column-end: auto;
+}
+
+.app-date .btn {
+  font-size: 14px;
+  color: white;
+  background: var(--main-color);
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 500;
+  width: 125px;
+  padding: 0;
+}
+
+.app-date .btn:hover {
+  color: #00D363 !important;
+  border: 1px solid #00D363;
+  background: transparent;
+}
+
+.app-date .date {
+  font-size: 14px;
+  color: #7A838B;
+}
+
+.job_list {
+  display: grid;
+  height: fit-content;
+}
+
+.job_list .pagination {
+  width: fit-content ;
+  text-align: center;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(4, 38px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pagination a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  align-content: center;
+  justify-content: space-around;
+  border: 1px solid transparent;
+  color: #7A838B;
+  display: inline-block;
+  text-decoration: none;
+  margin: 0 5px; 
+}
+
+.pagination a:hover {
+  color: var(--main-color); 
+  border-color: var(--main-color); 
+}
+
+.content .job_list > div:last-child {
+  padding: 0;
+}
+
+.content .job_list > div:nth-last-child(2) {
+  padding-bottom: 60px;
+}
+
+/* Media Queries */
+
+/* Screens less than 991px */
+@media (max-width: 991px) {
+  .content {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 50px 0;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Default (larger screens) */
+.content {
+  display: grid;
+  grid-template-columns: 1fr 3fr; /* Two columns: filter and job list */
+  grid-template-areas: 
+    "filter job_list"; /* Define areas for larger screens */
+  grid-column-gap: 10px;
+  padding: 100px 0px 80px;
+  color: #7A838B;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+/* Set grid areas for filter and job_list */
+.content .filter {
+  grid-area: filter; /* Filter will be in the first column */
+}
+
+.content .job_list {
+  grid-area: job_list; /* Job list will be in the second column */
+}
+
+/* Smaller screens (less than 1260px) */
+@media (max-width: 1260px) {
+  .content {
+    grid-template-columns: 1fr; /* Single-column layout */
+    grid-template-areas: 
+      "filter" 
+      "job_list"; /* Stack filter and job_list in one column */
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  
+  .content .job_list {
+    margin-top: 20px; /* Add spacing below the filter */
+  }
+
+  .content button, .content .filter .search input {
+    width: 90%;
+  }
+}
+
+
+/* Smaller screens (less than 1260px) */
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr; /* Single-column layout */
+    grid-template-areas: 
+      "filter" 
+      "job_list"; /* Stack filter and job_list in one column */
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  
+  .content .job_list {
+    margin-top: 20px; /* Add spacing below the filter */
+  }
+  .content h3, .content p {
+    font-size: 16px;
+  }
+  .content h3 {
+    font-size: 14px;
+  }
+  .content p {
+    font-size: 12px;
+  }
+  .content button, .content .filter .search input {
+    width: 90%;
+  }
+}
+
+
+@media (max-width: 1400px) and (min-width: 1260px) {
+  .main {
+    grid-template-rows: 1fr 1fr; 
+    gap: 20px; 
+  }
+
+  #p1, #p2 {
+    grid-column: span 1; 
+  }
+
+  #p1 p, #p2 p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 1070px) {
+  .main {
+    grid-template-rows: 1fr 1fr; 
+    gap: 20px; 
+  }
+
+  #p1, #p2 {
+    grid-column: span 1; 
+  }
+
+  #p1 p, #p2 p {
+    font-size: 14px;
+  }
+}
+
+/* Job List Page Styles */
+
+/* Set grid areas for filter and job_list */
+.dcontent .jnm-desc-app {
+  grid-area: jnm_desc_app; /* Filter will be in the first column */
+}
+
+.dcontent .sum {
+  grid-area: sum; /* Job list will be in the second column */
+}
+
+/* Default (larger screens) */
+
+
+.dcontent {
+  display: grid;
+  grid-template-columns: 4fr 2fr; /* Two columns: filter and job list */
+  grid-template-areas: 
+    "jnm_desc_app sum"; /* Define areas for larger screens */
+  grid-column-gap: 10px;
+  padding: 100px 0px 80px;
+  color: #7A838B;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+@media (max-width: 768px) and (min-width: 200px) {
+  /* Set grid areas for filter and job_list */
+  .dcontent .main #p1 {
+  grid-area: p1; /* Filter will be in the first column */
+  margin-bottom: 2px;
+}
+
+.dcontent .main #p2 {
+  grid-area: p2; /* Job list will be in the second column */
+}
+
+.dcontent .main {
+  display: grid;
+  grid-template-columns: 1fr; /* Single-column layout */
+  grid-template-areas: 
+    "p1" 
+    "p2"; /* Stack filter and job_list in one column */
+}
+#p1 p, #p2 p {
+  font-size: 14px;
+}
+}
+
+.dcontent .jnm-desc-app .jnm .img-name .img {
+  height: 80px;
+  width: 80px;
+  background-color: var(--section-background);
+  display: inline-block;
+}
+
+.dcontent .jnm-desc-app .img-name {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: center;
+}
+
+.dcontent .jnm-desc-app .img-name .image {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.dcontent .jnm-desc-app .img-name .img {
+  position: relative;
+  margin-right: 25px;
+  background-color: #F5F7FA;
+}
+
+.dcontent .jnm-desc-app .img-name .name h4 {
+  margin: 0 0 20px;
+  color: #191D34;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.dcontent .jnm-desc-app .img-name .name p {
+  margin: 0;
+}
+
+@media(min-width: 768px){
+  .dcontent .jnm-desc-app .img-name .main {
+    display: grid;
+    grid-template-columns: 30% 20%; 
+    column-gap: 10px;
+}}
+
+.dcontent .jnm-desc-app .desc h4{
+  font-size: 20px;
+  font-weight: 500;
+  color: #001D38;
+  margin-bottom: 25px;
+  margin-top: 0px;
+}
+
+.dcontent .jnm-desc-app .jnm{
+  padding: 30px;
+}
+
+.dcontent .jnm-desc-app .desc{
+  padding: 40px;
+}
+
+
+.dcontent .jnm-desc-app .desc p{
+  color: #7A838B;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+  margin: 0px;
+  padding: 0px;
+}
+
+.dcontent .sum h3{
+  font-size: 24px;
+  color: #001D38;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.dcontent .sum .summery_header{
+  padding: 20px;
+}
+
+.dcontent .sum ul{
+    list-style-type:none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.dcontent .sum ul li {
+  font-size: 16px;
+  font-weight: 400;
+  color: #AAB1B7;
+  line-height: 38px;
+  padding-left: 18px;
+  position: relative;
+}
+
+.dcontent .sum ul li::before{
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #AAB1B7;
+  border-radius: 50%;
+  left: 0;
+  content: '';
+  top: 14px;
+}
+
+.dcontent .sum .job_content{
+  padding: 40px;
+}
+
+.dcontent .sum ul li span {
+  color: #001D38;
+}
+
+
+
+@media (max-width: 1430px) and (min-width: 992px) {
+  .dcontent {
+    padding: 100px 0px 80px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .dcontent .jnm-desc-app .img-name .main {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1070px) and (min-width: 992px) {
+  .dcontent .jnm-desc-app .img-name .main {
+    display: grid;
+    grid-template-columns: 40% 30%; 
+    column-gap: 10px;
+  }
+
+  .dcontent {
+    padding: 100px 0px 80px;
+    margin-left: 4%;
+    margin-right: 4%;
+  }
+}
+
+@media (max-width: 992px) and (min-width: 200px) {
+  .dcontent {
+    display: grid;
+    grid-template-columns: 1fr; /* Single-column layout */
+    grid-template-areas: 
+      "jnm_desc_app" 
+      "sum"; /* Stack filter and job_list in one column */
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+}
+
+.go{
+  text-decoration: none; 
+  color: inherit;
+  cursor: pointer !important;
+}
+
+.go:hover {
+  text-decoration: none;
+}
+
+.content .name .img-name{
+  cursor: pointer !important;
+}
+
+.dcontent .jnm-desc-app .app h4 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  color: #191d34;
+}
+
+.dcontent .jnm-desc-app .app{
+  background-color: white;
+  padding: 0px 7%;
+  margin-top: 30px;
+}
+
+.dcontent .jnm-desc-app .app .app-btn{
+  background: var(--main-color);
+  display: inline-block;
+  padding: 13px 29px 13px 29px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 0;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  text-align: center;
+  color: #fff !important;
+  text-transform: capitalize;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 100%;
+}
+
+
+.dcontent .jnm-desc-app .app .app-btn:hover {
+  color: #00D363 !important;
+  border: 1px solid #00D363;
+  background: transparent;
+}
+
+/* Input field styling */
+.input_field {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.input_field input,
+.input_field textarea,
+.single_field .option {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease-in-out;
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.input_field input:focus,
+.input_field textarea:focus,
+.single_field .option:focus {
+  border-color: #80bdff;
+  outline: none;
+}
+
+.input_field textarea {
+  min-height: 100px; /* Ensure textarea has a consistent height */
+}
+
+/* File upload styling */
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.input-group-prepend button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-right: 10px;
+  font-size: 16px;
+  color: #7A838B;
+}
+
+.custom-file {
+  position: relative;
+  width: 100%;
+}
+
+.custom-file-input {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-file-label {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  display: block;
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.custom-file-input:focus + .custom-file-label {
+  border-color: #80bdff;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 15px;
+  }
+}
+
+
+.Pcontent {
+  display: block;
+  width: 50%;
+  padding: 0px;
+  margin: 100px 25% 80px;
+}
+
+.Pcontent .post-btn {
+  background: var(--main-color);
+  display: inline-block;
+  padding: 13px 29px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 0;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  text-align: center;
+  color: #fff !important;
+  text-transform: capitalize;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.Pcontent .post-btn:hover {
+  color: #00D363 !important;
+  border: 1px solid #00D363;
+  background: transparent;
+}
+
+.Pcontent h4 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  color: #191d34;
+}
+
+.Pcontent .single_field .option {
+  color: #7A838B;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: solid 1px #e8e8e8;
+}
+
+@media (max-width: 768px) {
+  .Pcontent {
+    display: block;
+    width: 95% !important;
+    padding: 0px !important;
+    margin: 100px 2.5% 80px !important;
+  }
+}
+
+.container .home{
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+.container .home:hover{
+  color: var(--main-color) !important;
+}

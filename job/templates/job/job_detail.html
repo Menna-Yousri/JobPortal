@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <h1 class="h1">{{job}}</h1>
+{% endblock title %}
+{% block Content %}
+    <div class="dcontent">
+        <div class="jnm-desc-app">
+            <div class="jnm">
+                    <div class="img-name">
+                        <div class="img">
+                            <img src="{{job.image.url}}" alt="Job image" class="image">
+                        </div>
+                        <div class="name">
+                            <h4>{{job}}</h4>
+                            <div class="main">
+                                <div id="p1"><p> <i class="fa-solid fa-location-dot"></i> Menoufia, Menouf</p></div>
+                                <div id="p2"><p> <i class="fa-regular fa-clock"></i> {{job.job_type}}</p></div>
+                            </div>
+    
+                        </div>
+                    </div>
+            </div>
+            <div class="desc">
+                <h4>Job description</h4>
+                <p class="desc">{{job.description}}</p>
+            </div>
+            <div class="app">
+                <h4>Apply for the job</h4>
+                <form method="POST">
+                    {% csrf_token %}
+                            <div class="input_field">
+                                <input type="text" placeholder="Your name" name="name">
+                            </div>
+
+                            <div class="input_field">
+                                <input type="email" placeholder="Email" name="email">
+                            </div>
+
+
+                            <div class="input_field">
+                                <input type="url" placeholder="Website/Portfolio link" name="webiste">
+                            </div>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <button type="button" id="inputGroupFileAddon03" onclick="document.getElementById('inputGroupFile03').click();" style="cursor: pointer;">
+                                    <i class="fa fa-cloud-upload" aria-hidden="true">
+                                    </i>
+                                </button>
+                                </div>
+                                <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" name="cv" onchange="updateFileName()">
+                                <label class="custom-file-label" for="inputGroupFile03">Upload CV</label>
+                                </div>
+                        </div>
+
+                            <div class="input_field">
+                                <textarea name="cover_letter" id="" cols="30" rows="10" placeholder="Coverletter" style="min-height: 100px;"></textarea>
+                            </div>
+
+                    <button class="app-btn" type="submit">Apply Now</button>
+                </form>
+            </div>
+        </div>
+        <div class="sum">
+            <div class="summery_header">
+                <h3>Job Summery</h3>
+            </div>
+            <div class="job_content">
+                <ul>
+                    <li>Published on: <span>{{job.published_at|date:'d M o'}}</span></li>
+                    <li>Vacancy: <span>
+                        {% if job.vacancy == 1 %}
+                        {{job.vacancy}} Position
+                        {% else %}
+                        {{job.vacancy}} Positions
+                        {% endif %}
+                    </span></li>
+                    <li>Experience: <span>
+                        {% if job.vacancy == 1 %}
+                        {{job.experience}} Year
+                        {% else %}
+                        {{job.experience}} Years
+                        {% endif %}
+                    </span></li>
+                    <li>Salary: <span>{{job.salary}}k/y</span></li>
+                    <li>Location: <span>Cairo, 6 October</span></li>
+                    <li>Job Nature: <span>{{job.job_type}}</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        function updateFileName() {
+        var input = document.getElementById('inputGroupFile03');
+        var label = document.querySelector('label[for="inputGroupFile03"]');
+        
+        // Check if a file is selected
+        if (input.files.length > 0) {
+            var fileName = input.files[0].name;
+            label.textContent = fileName;
+        } else {
+            label.textContent = 'Upload CV'; // Default label text
+        }
+    }
+    </script>
+{% endblock Content %}
